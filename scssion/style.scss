@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100&display=swap');
+*,
+*::after,
+*::before{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+$bg-pink1: #8531fe;
+$bg-pink2: #7e32fd;
+$bg-cols: #202442;
+$gry: rgb(107, 113, 134);
+$rbt: 'Roboto', sans-serif;
+
+%font20{
+    font-size: 20px;
+} 
+
+@mixin displayer($jc : center, $ai: center , $cl: row) {
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+    flex-direction: $cl;
+}
+@mixin fonts($ff: sans-serif, $fs: 14px, $fw: 300){
+    font-family: $ff;
+    font-size: $fs;
+    font-weight: $fw;
+}
+
+
+
+.weather-app{
+    height: 100vh;
+    background: linear-gradient(0deg, $bg-pink1, $bg-pink2);
+    .container{
+        width: 100%;
+        max-width: 1300px;
+        margin: 0 auto;
+        .weather-card{
+            height: 100vh;
+            @include displayer(center, center, column);            
+            .search-bar{
+                width: 25%;
+                
+                form{
+                    @include displayer(space-between, center , row);    
+                }
+                
+                input{
+                    padding: 5px 10px;
+                    border: 2px solid #202442;
+                    outline: none;
+                }
+                button{
+                    padding: 5px 10px;
+                    background-color: rgb(35, 36, 85);
+                    color: rgba(255, 255, 240, 0.589);
+                    border: 1px solid rgb(35, 36, 85);
+                    cursor: pointer;
+                }
+                padding: 20px 0px;
+            }
+            .center-weather{
+                padding: 30px 10px;
+                width: 25%;
+                height: 80%;
+                background-color:$bg-cols;
+                border-radius: 10px;
+                .top1{
+                    @include fonts($rbt, 14px , 400);
+                    padding: 10px 0;
+                }
+                .top1 h3{
+                    font-size: 26px;
+                    color: white;
+                    padding: 5px 0;
+                }
+                .top1 h6{
+                    color: $gry;
+                    font-size: 12px;
+                }
+                .top2{
+                    display: grid;
+                    padding: 15px 0px;
+                    grid-template-columns: repeat(4, 1fr);
+
+                    div{
+                        @include fonts($rbt, 14px, 300 );
+                        color: white;
+                        @include displayer(center, center, column );
+                        *{
+                            padding:2px 0;
+                        }
+                        i{
+                            @extend %font20;
+                            color: white;
+                            padding: 8px 0;
+                        }
+                    }
+                }
+                .top3{
+                    height: auto;
+                    padding: 30px 0;
+                    text-align: center;
+                    @include displayer(center, center, column);
+                    i{
+                        font-size: 100px;
+                        color: rgb(167, 183, 255);
+                        padding: 10px 0;
+                        padding-bottom: 10px;
+                    }
+                    .gradus{
+                        @include fonts($rbt, 35px ,700);
+                        color: white;
+                        padding: 5px 0;
+                        display: block;
+                    }
+                    .state{
+                        @include fonts($rbt, 14px, 400 );
+                        color: whitesmoke;
+                        text-transform: capitalize;
+                        text-align: center;
+                        
+                    }
+                }
+                .top4{
+                      padding: 10px 0;
+                      @include fonts($rbt, 14px, 200);
+                      color: aliceblue;
+                      display: grid;
+                      grid-template-columns: repeat(3, 1fr);
+                      div{
+                        @include displayer(center, center, column);
+                        h5{
+                            font-size: 14px;
+                            font-weight: 700;
+                            font-family: $rbt;
+                        }
+                        h6{
+                            font-family: $rbt;
+                            font-size: 13px;
+                            font-weight: 500;
+                            padding: 3px 0;
+                            color: $gry;
+                        }
+                      }
+
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width: 900px){
+ 
+    .search-bar{
+        width: 100% !important;
+        position: absolute;
+        bottom: 10px;
+        left: 0px;
+        form{
+            display: flex;
+            justify-content: space-around !important;
+        }
+        
+        input{
+            padding: 10px 15px;
+            border: 2px solid #202442;
+            outline: none;
+        }
+        button{
+            padding: 10px 20px !important;
+        }
+    }
+    .center-weather{
+        border-radius: 0 !important;
+        padding: 10px 20px !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+}
