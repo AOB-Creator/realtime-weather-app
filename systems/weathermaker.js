@@ -155,7 +155,7 @@ class Weathermake{
 
 
 function KelvintoCelcium(Feels){
-    const Feelslike = Math.floor(Feels-273.16);
+    const Feelslike = Math.ceil(Feels-273.16)+1;
     return Feelslike
 }
 
